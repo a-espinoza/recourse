@@ -2,7 +2,7 @@
   <div class="well well-sm">
     <form>
       <h4>Search</h4>
-      <input id="search-box" type="text" data-ng-model="vm.searchTerm">
+      <input id="search-box" type="text" data-ng-model="vm.queryString">
       <h4 data-ng-show="vm.currentUser">Filter</h4>
       <label data-ng-show="vm.currentUser"><input type="checkbox" data-ng-model="vm.filters.favorites"/>My Favorites</label>
       <label data-ng-show="vm.currentUser"><input type="checkbox" data-ng-model="vm.filters.myPosts"/>My Posts</label>
@@ -12,7 +12,7 @@
 
 <div class="col-md-9 col-md-pull-3">
   <h1>Resources<span class="header-link"><a class="button" data-toggle="modal" data-target="#newPostModal">New</a></span></h1>
-  <div class="post-table" data-ng-repeat="post in vm.posts | myPosts:vm | myFavorites:vm | filter:vm.searchTerm | orderBy: 'created_at':true">
+  <div class="post-table" data-ng-repeat="post in vm.posts | myPosts:vm | myFavorites:vm | filter:vm.queryString | orderBy: 'created_at':true">
 
     <div class="post">
       <div class="votes">

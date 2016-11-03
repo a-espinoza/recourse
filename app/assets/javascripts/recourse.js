@@ -57,6 +57,7 @@ angular
     "PostFactory",
     "FavoriteFactory",
     "VoteFactory",
+    "$location",
     PostIndexControllerFunction
   ])
 
@@ -242,7 +243,7 @@ function RecourseControllerFunction(TokenFactory, DeviseFactory, $state) {
 
 
 // Index Post Controller Function
-function PostIndexControllerFunction(PostFactory, FavoriteFactory, VoteFactory) {
+function PostIndexControllerFunction(PostFactory, FavoriteFactory, VoteFactory, $location) {
 
   // Update posts object against API
   this.posts = PostFactory.query()
@@ -252,6 +253,8 @@ function PostIndexControllerFunction(PostFactory, FavoriteFactory, VoteFactory) 
     favorites: false,
     myPosts: false
   }
+
+  this.queryString = $location.search().s
 
   // Set front-end currentUser
   if (localStorage.getItem('recourseUser')) {
